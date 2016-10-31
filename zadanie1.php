@@ -1,4 +1,7 @@
 <?php
+error_reporting(-1);
+mb_internal_encoding('utf-8');
+
 $xml = simplexml_load_file("data.xml");
 
 echo 'Номер заказа - '.$xml[PurchaseOrderNumber];
