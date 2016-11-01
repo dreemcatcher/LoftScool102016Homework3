@@ -46,7 +46,6 @@ function compareFiles(){  // Функция сравнения файлов
     }
 
     $result =  implode("[]", $diffArray);
-   // $result = implode("[]", $diffArray);
     return $result;
 }
 
