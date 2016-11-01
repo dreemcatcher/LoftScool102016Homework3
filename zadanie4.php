@@ -18,3 +18,4 @@ $content=file_get_contents_curl("https://en.wikipedia.org/w/api.php?action=query
 
 echo $content;
 
+$x= json_decode($content);
