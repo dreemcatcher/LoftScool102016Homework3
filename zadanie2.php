@@ -49,11 +49,11 @@ function compareFiles(){  // Функция сравнения файлов
     return $result;
 }
 
-echo "<br>Вызываем JSON ".rndArray();
-
-echo "<br>Создаём файл output.json ".myFileCreate("output.json", rndArray());
-
-echo "<br>Читаем файл ".myReadFromFile("output.json");
+//echo "<br>Вызываем JSON ".rndArray();
+//
+//echo "<br>Создаём файл output.json ".myFileCreate("output.json", rndArray());
+//
+//echo "<br>Читаем файл ".myReadFromFile("output.json");
 
 $openOrNotOpen=mt_rand(0,0);
 
@@ -62,9 +62,15 @@ if($openOrNotOpen==0){
     $changeFileData= json_decode(myReadFromFile("output.json"));
     for ($i=0;$i<count($changeFileData);$i++){
         for($j=0;$j<count($changeFileData[$i]);$j++){  // Ну тут меняем каждую строку которая равна 2тест
-            if ($changeFileData[$i][$j]=='2Тест'){
-                $changeFileData[$i][$j]='И тут такое изменение. Пыщь.';
+            if ($changeFileData[$i][$j] == '2Тест'){
+                $changeFileData[$i][$j] =  'И тут такое изменение. Пыщь.';
             }else{
+                // этот блок зачем?
+                //  В идеале надо вывести два файла и показать изменения между ними
+                // а конкретнее просто два массива сравнить и показать что добавилось или убавилось
+                // ну и код не особо читаем compareFiles делает слишком
+                // если она сравнивает файлы то просто должна что то возврашать например boolean
+                //или различия и т.д
             }
         }
     }
@@ -76,3 +82,4 @@ if($openOrNotOpen==0){
 }
 
 echo "<br>Сравниваем файлы и выводим разницу ".compareFiles();
+

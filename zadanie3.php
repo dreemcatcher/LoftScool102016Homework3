@@ -33,6 +33,9 @@ function summFromCSV($filename){
                     $tempArray[] = $data[$c];
                     //echo $data[$c]."<br>";
                 }else{
+                    //блок зачем?
+                    // пробелы так де надо расставить везде иначе код не читаем
+
                 }
             }
         }
