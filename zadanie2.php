@@ -3,39 +3,38 @@ error_reporting(-1);
 mb_internal_encoding('utf-8');
 
 function rndArray(){
-    $rndArray=array();
-    $size=mt_rand(5,7);
-    for($i=0;$i<$size;$i++){
-        for ($j=0; $j<$size; $j++){
-            $arrayj[]=$j+$j."Тест";
+    $rndArray = array();
+    $size = mt_rand(5,7);
+    for($i = 0;$i<$size;$i++){
+        for ($j = 0; $j < $size; $j++){
+            $arrayj[] = $j + $j."Тест";
         }
-        $rndArray[]=$arrayj;
+        $rndArray[] = $arrayj;
     }
     return json_encode($rndArray);
 }
 
 function myFileCreate($fileName, $fileContent){
     file_put_contents($fileName, $fileContent);
-    $result=file_get_contents($fileName);
+    $result = file_get_contents($fileName);
     return $result;
 }
 
 function myReadFromFile($fileName){
-    $result=file_get_contents($fileName);
+    $result = file_get_contents($fileName);
     return $result;
 }
 
 function compareFiles(){  // Функция сравнения файлов
-    $readFirstFile=myReadFromFile("output2.json");
-    $readFirstFile2=myReadFromFile("output.json");
+    $readFirstFile = myReadFromFile("output2.json");
+    $readFirstFile2 = myReadFromFile("output.json");
 
-    $diffArray=[];
+    $diffArray = [];
 
-    $readFirstFile=json_decode($readFirstFile);
-    $readFirstFile2=json_decode($readFirstFile2);
+    $readFirstFile = json_decode($readFirstFile);
+    $readFirstFile2 = json_decode($readFirstFile2);
 
-
-    for($i=0; $i<count($readFirstFile);$i++){
+    for($i = 0; $i < count($readFirstFile); $i++){
         for($j=0; $j<count($readFirstFile[$i]);$j++){
             if($readFirstFile[$i][$j]==$readFirstFile2[$i][$j]){
                 // Различий нет, сидим курим.
@@ -71,9 +70,13 @@ if($openOrNotOpen==0){
                 // ну и код не особо читаем compareFiles делает слишком
                 // если она сравнивает файлы то просто должна что то возврашать например boolean
                 //или различия и т.д
+
+                //Этот блок для условия, когда элемент массива не равен 2Тест
+                // compareFiles возвращает различия между двумя файлами же.
             }
         }
     }
+
 
     echo "<br>Создаём файл output2.json ".myFileCreate("output2.json", json_encode($changeFileData));
 }else{
@@ -82,4 +85,3 @@ if($openOrNotOpen==0){
 }
 
 echo "<br>Сравниваем файлы и выводим разницу ".compareFiles();
-
